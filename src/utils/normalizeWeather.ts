@@ -18,29 +18,26 @@ export const normalizeWeather = (data: RawWeatherResponse, city: City): Normaliz
             name: city.name,
             country: city.country,
             latitude: city.latitude,
-            longitude: city.longitude   
+            longitude: city.longitude
         },
         current: {
             time: data.current.time,
-            temperature: data.current.temperature_2m,
-            windspeed: data.current.windspeed_10m,
-            humidity: data.current.relative_humidity_2m,
-            weathercode: data.current.weathercode,
+            temperature: Math.round(data.current.temperature_2m),
+            windspeed: Math.round(data.current.windspeed_10m),
+            humidity: Math.round(data.current.relative_humidity_2m),
             description: mapWeatherCode(data.current.weathercode)
         },
         hourly: data.hourly.time.slice(0, 24).map((time: string, i: number) => ({
             time,
-            temperature: data.hourly.temperature_2m[i],
-            precipitation_probability: data.hourly.precipitation_probability[i],
-            weathercode: data.hourly.weathercode[i],
+            temperature: Math.round(data.hourly.temperature_2m[i]),
+            precipitation_probability: Math.round(data.hourly.precipitation_probability[i]),
             description: mapWeatherCode(data.hourly.weathercode[i])
         })),
         daily: data.daily.time.map((date: string, i: number) => ({
             date,
-            precipitation_sum: data.daily.precipitation_sum[i],
-            max_temperature: data.daily.temperature_2m_max[i],
-            min_temperature: data.daily.temperature_2m_min[i],
-            weathercode: data.daily.weathercode[i],
+            precipitation_sum: Math.round(data.daily.precipitation_sum[i]),
+            max_temperature: Math.round(data.daily.temperature_2m_max[i]),
+            min_temperature: Math.round(data.daily.temperature_2m_min[i]),
             description: mapWeatherCode(data.daily.weathercode[i])
         }))
     };

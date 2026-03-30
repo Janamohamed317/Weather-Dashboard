@@ -35,7 +35,6 @@ export type NormalizedCurrent = {
     temperature: number;
     windspeed: number;
     humidity: number;
-    weathercode: number;
     description: string;
 }
 
@@ -43,7 +42,6 @@ export type NormalizedHourly = {
     time: string;
     temperature: number;
     precipitation_probability: number;
-    weathercode: number;
     description: string;
 }
 
@@ -52,7 +50,6 @@ export type NormalizedDaily = {
     max_temperature: number;
     min_temperature: number;
     precipitation_sum: number;
-    weathercode: number;
     description: string;
 }
 

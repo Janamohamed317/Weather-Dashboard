@@ -1,3 +1,5 @@
+import { City } from "./City";
+
 export type RawCurrent = {
     time: string;
     interval: number;
@@ -55,10 +57,7 @@ export type NormalizedDaily = {
 }
 
 export type NormalizedWeatherResponse = {
-    city: {
-        name: string;
-        country: string;
-    };
+    city: City
     current: NormalizedCurrent;
     hourly: NormalizedHourly[];
     daily: NormalizedDaily[];

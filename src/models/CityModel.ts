@@ -28,4 +28,4 @@ const CitySchema = new mongoose.Schema({
 
 CitySchema.index({ userId: 1, name: 1 }, { unique: true });
 
-export const City = mongoose.model("City", CitySchema);
+export const CityModel = mongoose.model("City", CitySchema);

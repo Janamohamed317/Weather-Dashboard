@@ -8,3 +8,10 @@ export type City = {
 export type GeoResponse = {
     results?: City[];
 };
+
+export interface ReverseGeoResponse {
+    city: string;
+    countryName: string;
+    latitude: number;
+    longitude: number;
+}

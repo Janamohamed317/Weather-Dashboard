@@ -16,7 +16,9 @@ export const normalizeWeather = (data: RawWeatherResponse, city: City): Normaliz
     return {
         city: {
             name: city.name,
-            country: city.country
+            country: city.country,
+            latitude: city.latitude,
+            longitude: city.longitude   
         },
         current: {
             time: data.current.time,

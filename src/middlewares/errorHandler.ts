@@ -20,6 +20,12 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
         })
     }
 
+    if (err.name === "JsonWebTokenError") {
+        return res.status(401).json({
+            message: "Invalid token"
+        })
+    }
+
     console.error("Unexpected error:", err)
     return res.status(500).json({
         message: "Internal server error",

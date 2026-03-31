@@ -1,3 +1,4 @@
+import { CityModel } from "../models/CityModel";
 import { User } from "../models/UserModel";
 import { UserLogin, UserRegister } from "../types/User";
 import { BadRequestError, ConflictError, UnauthorizedError } from "../utils/error";
@@ -76,6 +77,10 @@ export const loginService = async (data: UserLogin) => {
     await verifyPasswordService(data.password, user.password);
 
     const token = tokenCreation(user._id.toString());
-
     return { token, id: user._id };
 };
+
+export const deleteAccountService = async (id: string) => {
+    await User.findByIdAndDelete(id)
+    await CityModel.deleteMany({ userId: id });
+}

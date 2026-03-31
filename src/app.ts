@@ -1,4 +1,3 @@
-import { dbConnection } from "./config/dbConnection";
 import express from "express";
 import authPath from "./routes/authRoute";
 import weatherPath from "./routes/weatherRoute";
@@ -29,12 +28,5 @@ app.use('/api/weather', weatherPath);
 app.use(notFoundURL)
 
 app.use(errorHandler)
-
-
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
-    dbConnection();
-    console.log(`Server is running on port ${PORT}`);
-});
 
 export default app;

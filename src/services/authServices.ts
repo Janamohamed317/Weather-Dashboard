@@ -1,6 +1,6 @@
 import { User } from "../models/UserModel";
 import { UserLogin, UserRegister } from "../types/User";
-import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError } from "../utils/error";
+import { BadRequestError, ConflictError, UnauthorizedError } from "../utils/error";
 import { tokenCreation } from "../utils/tokenCreation";
 import { validateLogin, validateRegister } from "../utils/validations/userValidation";
 import bcrypt from "bcryptjs"

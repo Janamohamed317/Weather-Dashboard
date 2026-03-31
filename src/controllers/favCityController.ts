@@ -4,7 +4,7 @@ import { City } from "../types/City";
 import { AuthRequest } from "../types/AuthRequest";
 import { getUserFavoritesService, markCityAsFavoriteService, unmarkFavoriteCityService } from "../services/CityService";
 
-export const markFavCity = asyncHandler(async (req: AuthRequest<{}, {}, City>, res: Response) => {
+export const markFavCity = asyncHandler(async (req: AuthRequest<Record<string, never>, Record<string, never>, City>, res: Response) => {
     const city = await markCityAsFavoriteService(req.body, req.user!.id);
     res.status(201).json({ message: "City added to favorites", data: city });
 });

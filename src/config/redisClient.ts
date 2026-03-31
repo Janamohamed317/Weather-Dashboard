@@ -1,5 +1,6 @@
 import Redis from "ioredis";
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const redis = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
 

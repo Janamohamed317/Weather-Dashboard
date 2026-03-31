@@ -1,6 +1,6 @@
 import { CityModel } from "../models/CityModel";
 import { City } from "../types/City";
-import { BadRequestError, ConflictError, NotFoundError } from "../utils/error";
+import { BadRequestError, ConflictError, NotFoundError, isMongoError } from "../utils/error";
 import { validateCityAdd } from "../utils/validations/cityValidation";
 
 export const markCityAsFavoriteService = async (city: City, userId: string) => {
@@ -18,8 +18,8 @@ export const markCityAsFavoriteService = async (city: City, userId: string) => {
         });
         await newCity.save();
         return newCity;
-    } catch (error: any) {
-        if (error.code === 11000) {
+    } catch (error: unknown) {
+        if (isMongoError(error) && error.code === 11000) {
             throw new ConflictError("City is already in your favorites");
         }
         throw error;

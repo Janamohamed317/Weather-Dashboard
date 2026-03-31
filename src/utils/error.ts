@@ -39,3 +39,11 @@ export class ForbiddenError extends AppError {
         super(message, 403)
     }
 }
+
+export interface MongoError extends Error {
+    code: number;
+}
+
+export function isMongoError(error: unknown): error is MongoError {
+    return typeof error === 'object' && error !== null && 'code' in error;
+}

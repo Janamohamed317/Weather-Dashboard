@@ -33,7 +33,7 @@ To run the application locally, follow the steps below.
 ### 1. Clone the repository
 Clone this project to your local machine and navigate into the directory:
 ```bash
-git clone https://github.com/Janamohamed317/Weather-Dashboard.git
+git clone https://github.com/Janamohamed317/Weather-Dashboard-Backend.git
 cd Weather-Dashboard-Backend
 ```
 

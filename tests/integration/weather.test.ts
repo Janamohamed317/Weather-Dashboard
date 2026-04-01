@@ -1,7 +1,14 @@
 import request from "supertest";
 import app from "../../src/app";
+import redis from "../../src/config/redisClient";
 
 describe("Weather Integration Tests", () => {
+    afterEach(async () => {
+        const keys = await redis.keys('weather:*');
+        if (keys.length > 0) {
+            await redis.del(...keys);
+        }
+    });
     it("should get weather data by city name (search)", async () => {
         const cityName = "London";
         const response = await request(app)

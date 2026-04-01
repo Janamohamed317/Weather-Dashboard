@@ -9,6 +9,10 @@ describe("Auth Integration Tests", () => {
         password: "Password123!"
     };
 
+    afterEach(async () => {
+        await User.deleteMany({ email: testUser.email });
+    });
+
     it("should signup a new user successfully", async () => {
         const response = await request(app)
             .post("/api/auth/signup")

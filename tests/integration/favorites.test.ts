@@ -1,5 +1,7 @@
 import request from "supertest";
 import app from "../../src/app";
+import { User } from "../../src/models/UserModel";
+import { CityModel } from "../../src/models/CityModel";
 
 describe("Favorites Integration Tests", () => {
     let token: string;
@@ -22,6 +24,11 @@ describe("Favorites Integration Tests", () => {
             .post("/api/auth/signup")
             .send(testUser);
         token = response.body.token;
+    });
+
+    afterEach(async () => {
+        await User.deleteMany({ email: testUser.email });
+        await CityModel.deleteMany({ name: testCity.name });
     });
 
     it("should mark a city as favorite successfully", async () => {

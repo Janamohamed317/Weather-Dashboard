@@ -19,14 +19,4 @@ afterAll(async () => {
     await redis.quit();
 });
 
-afterEach(async () => {
-    const keys = await redis.keys('weather:*');
-    if (keys.length > 0) {
-        await redis.del(...keys);
-    }
 
-    const collections = mongoose.connection.collections;
-    for (const key in collections) {
-        await collections[key].deleteMany({});
-    }
-});

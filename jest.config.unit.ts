@@ -3,8 +3,7 @@ import type { Config } from 'jest';
 const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-  testMatch: ['**/tests/integration/**/*.test.ts'],
+  testMatch: ['**/tests/unit/**/*.test.ts'],
   verbose: true,
   forceExit: true,
   clearMocks: true,

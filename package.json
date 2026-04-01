@@ -10,7 +10,9 @@
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/src/server.js",
-    "test": "jest --runInBand",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest --config jest.config.unit.ts --runInBand",
+    "test:integration": "jest --config jest.config.ts --runInBand",
     "lint": "eslint ."
   },
   "keywords": [],
